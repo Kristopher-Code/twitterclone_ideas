@@ -3,9 +3,10 @@
         <div class="d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
                 <img style="width:50px" class="me-2 avatar-sm rounded-circle"
-                    src="https://api.dicebear.com/7.x/pixel-art/svg?seed=Felix" alt="Felix Avatar">
+                    src="https://api.dicebear.com/7.x/pixel-art/svg?seed={{ $idea->user->name }}"
+                    alt="{{ $idea->user->name }}">
                 <div>
-                    <h5 class="card-title mb-0"><a href="#"> Felix
+                    <h5 class="card-title mb-0"><a href="#"> {{ $idea->user->name }}
                         </a></h5>
                 </div>
             </div>
@@ -13,6 +14,7 @@
                 <form method="POST" action="{{ route('ideas.destroy', $idea->id) }}">
                     @csrf
                     @method('delete')
+
                     <a class="mx-2" href="{{ route('ideas.edit', $idea->id) }}">Edit</a>
                     <a class="ms-1" href="{{ route('ideas.show', $idea->id) }}">View</a>
                     <button class="btn btn-danger btn-sm">X</button>
